@@ -18,10 +18,8 @@
     <?php wp_head() ?>
 </head>
 
-<body>
+<body <?php body_class("theme-dev") ?>>
+
+    <?php wp_body_open() ?>
+
     <header>Header</header>
-
-    <!-- Add closing tags -->
-</body>
-
-</html>
