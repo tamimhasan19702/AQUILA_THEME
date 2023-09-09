@@ -1,1 +1,1 @@
-console.log("Hello World");
+console.log("this is a test script file");
