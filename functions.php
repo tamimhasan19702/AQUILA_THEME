@@ -6,6 +6,12 @@
  * @package Arrow
  */
 
+if(!defined('ARROW_DIR_PATH')){
+  define('ARROW_DIR_PATH', untrailingslashit(get_template_directory()));
+}
+
+require_once ARROW_DIR_PATH . '/inc/helpers/autoloader.php';
+
 function arrow_enqueue_scripts(){
   
   // Register Styles
