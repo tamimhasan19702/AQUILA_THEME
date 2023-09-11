@@ -28,4 +28,15 @@
     
     ?>
 
-    <header>Header</header>
+    <div class="site" id="page">
+        <header id="masthead" class="site-header" role="banner">
+            <?php 
+         get_template_part('template-parts/header/nav');
+         ?>
+        </header>
+
+        <div class="site-content" id="content">
+
+        </div>
+
+    </div>
