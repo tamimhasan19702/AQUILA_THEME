@@ -6,13 +6,15 @@
  * @package Arrow
  */
 
- namespace ARROW\inc;
- use ARROW\inc\traits\Singelton;
+ namespace Arrow\inc;
+ use Arrow\inc\traits\Singelton;
 
  class ARROW_THEME{
     use Singelton;
 
     protected function __construct(){
+
+        wp_die('hello');
         //load class
         $this->set_hooks();
     }

@@ -6,7 +6,7 @@
  * @package Arrow
  */
 
-namespace ARROW\inc\helpers;
+namespace Arrow\inc\helpers;
 
 /**
  * Auto loader function
@@ -18,7 +18,7 @@ namespace ARROW\inc\helpers;
 
  function autoload($resource = '') {
     $resource_path = false;
-    $namespace_root = 'ARROW\\';
+    $namespace_root = 'Arrow\\';
     $resource       = trim( $resource, '\\' );
 
 	if ( empty( $resource ) || strpos( $resource, '\\' ) === false || strpos( $resource, $namespace_root ) !== 0 ) {
@@ -86,7 +86,7 @@ namespace ARROW\inc\helpers;
       
  }
 
- spl_autoload_register( '\ARROW\inc\helpers\autoloader' );
+ spl_autoload_register( '\Arrow\inc\helpers\autoloader.php' );
 
 
 ?>

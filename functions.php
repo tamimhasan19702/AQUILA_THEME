@@ -12,7 +12,9 @@ if(!defined('ARROW_DIR_PATH')){
 
 require_once ARROW_DIR_PATH . '/inc/helpers/autoloader.php';
 function Arrow_get_theme_instance(){
-  \ARROW\inc\ARROW_THEME::get_instance();
+
+  \Arrow\inc\ARROW_THEME::get_instance();
+  
 }
 Arrow_get_theme_instance();
 
