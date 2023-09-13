@@ -49,6 +49,7 @@ function autoloader($resource = '') {
 	$file_name = '';
 
 	if ('inc' === $path[0]) {
+		
 		switch ($path[1]) {
 			case 'traits':
 				$directory = 'traits';
