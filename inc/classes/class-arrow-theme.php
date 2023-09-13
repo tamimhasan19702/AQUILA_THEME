@@ -6,8 +6,8 @@
  * @package Arrow
  */
 
- namespace Arrow\inc;
- use Arrow\inc\traits\Singelton;
+ namespace ARROW_THEME\inc;
+ use ARROW_THEME\inc\traits\Singelton;
 
  class ARROW_THEME{
     use Singelton;
