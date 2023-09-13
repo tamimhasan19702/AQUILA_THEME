@@ -7,7 +7,8 @@
  */
 
  namespace ARROW_THEME\inc;
- use ARROW_THEME\inc\traits\Singelton;
+ use ARROW_THEME\Inc\Traits\Singelton;
+
 
  class ARROW_THEME{
     use Singelton;
