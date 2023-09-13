@@ -1,6 +1,6 @@
 <?php
 
-namespace ARROW\inc\traits;
+namespace ARROW_THEME\Inc\Traits;
 
 trait Singelton{
     public function __construct(){

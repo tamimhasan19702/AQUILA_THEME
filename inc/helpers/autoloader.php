@@ -1,12 +1,5 @@
 <?php 
 
-/**
- * AutoLoader file for theme
- * 
- * @package Arrow
- */
-
-namespace ARROW\inc\helpers;
 
 /**
  * Auto loader function
@@ -15,78 +8,84 @@ namespace ARROW\inc\helpers;
  * 
  * @return  void
  */
+// autoload.php
 
- function autoload($resource = '') {
-    $resource_path = false;
-    $namespace_root = 'ARROW\\';
-    $resource       = trim( $resource, '\\' );
+/**
+ * AutoLoader function for the theme.
+ *
+ * @param string $resource Source namespace.
+ * @return void
+ */
 
-	if ( empty( $resource ) || strpos( $resource, '\\' ) === false || strpos( $resource, $namespace_root ) !== 0 ) {
+ namespace ARROW_THEME\Inc\Helpers;
+
+function autoloader($resource = '') {
+	$resource_path = false;
+	$namespace_root = 'ARROW_THEME\\';
+	$resource = trim($resource, '\\');
+
+	if (empty($resource) || strpos($resource, '\\') === false || strpos($resource, $namespace_root) !== 0) {
 		// Not our namespace, bail out.
 		return;
 	}
 
 	// Remove our root namespace.
-	$resource = str_replace( $namespace_root, '', $resource );
+	$resource = str_replace($namespace_root, '', $resource);
 
 	$path = explode(
 		'\\',
-		str_replace( '_', '-', strtolower( $resource ) )
+		str_replace('_', '-', strtolower($resource))
 	);
 
 	/**
 	 * Time to determine which type of resource path it is,
 	 * so that we can deduce the correct file path for it.
 	 */
-	if ( empty( $path[0] ) || empty( $path[1] ) ) {
+	if (empty($path[0]) || empty($path[1])) {
 		return;
 	}
 
 	$directory = '';
 	$file_name = '';
 
-	if ( 'inc' === $path[0] ) {
-
-		switch ( $path[1] ) {
+	if ('inc' === $path[0]) {
+		switch ($path[1]) {
 			case 'traits':
 				$directory = 'traits';
-				$file_name = sprintf( 'trait-%s', trim( strtolower( $path[2] ) ) );
+				$file_name = sprintf('trait-%s', trim(strtolower($path[2])));
 				break;
 
 			case 'widgets':
-			case 'blocks': // phpcs:ignore PSR2.ControlStructures.SwitchDeclaration.TerminatingComment
+			case 'blocks':
 				/**
-				 * If there is class name provided for specific directory then load that.
-				 * otherwise find in inc/ directory.
+				 * If there is a class name provided for a specific directory, then load that,
+				 * otherwise find it in the 'inc/' directory.
 				 */
-				if ( ! empty( $path[2] ) ) {
-					$directory = sprintf( 'classes/%s', $path[1] );
-					$file_name = sprintf( 'class-%s', trim( strtolower( $path[2] ) ) );
+				if (!empty($path[2])) {
+					$directory = sprintf('classes/%s', $path[1]);
+					$file_name = sprintf('class-%s', trim(strtolower($path[2])));
 					break;
 				}
 			default:
 				$directory = 'classes';
-				$file_name = sprintf( 'class-%s', trim( strtolower( $path[1] ) ) );
+				$file_name = sprintf('class-%s', trim(strtolower($path[1])));
 				break;
 		}
 
-		$resource_path = sprintf( '%s/inc/%s/%s.php', untrailingslashit( ARROW_DIR_PATH ), $directory, $file_name );
-
+		$resource_path = sprintf('%s/inc/%s/%s.php', untrailingslashit(ARROW_DIR_PATH), $directory, $file_name);
 	}
 
 	/**
 	 * If $is_valid_file has 0 means valid path or 2 means the file path contains a Windows drive path.
 	 */
-	$is_valid_file = validate_file( $resource_path );
+	$is_valid_file = validate_file($resource_path);
 
-	if ( ! empty( $resource_path ) && file_exists( $resource_path ) && ( 0 === $is_valid_file || 2 === $is_valid_file ) ) {
-		// We already making sure that file is exists and valid.
-		require_once( $resource_path ); // phpcs:ignore
+	if (!empty($resource_path) && file_exists($resource_path) && (0 === $is_valid_file || 2 === $is_valid_file)) {
+		// We are already making sure that the file exists and is valid.
+		require_once($resource_path);
 	}
-      
- }
+}
 
- spl_autoload_register( '\ARROW\inc\helpers\autoloader' );
-
+spl_autoload_register('ARROW_THEME\Inc\Helpers\autoloader');
 
 ?>
