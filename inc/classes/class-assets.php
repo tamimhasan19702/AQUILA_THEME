@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Bootstrap the theme
+ * enqueue theme assets
  * 
  * @package Arrow
  */
 
- namespace ARROW_THEME\inc;
- use ARROW_THEME\Inc\Traits\Singelton;
+namespace ARROW_THEME\Inc;
 
+use ARROW_THEME\Inc\Traits\Singelton;
 
- class ARROW_THEME{
+class Assets{
     use Singelton;
 
     protected function __construct(){
@@ -72,5 +72,4 @@
   wp_enqueue_script('bootstarp');
   
     }
-
- }
+}
