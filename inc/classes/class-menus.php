@@ -25,7 +25,7 @@ class Menus{
     }
 
     public function register_menus(){
-        register_nav_menu([
+        register_nav_menus([
             'arrow-header-menu' => esc_html__('Header Menu', 'arrow'),
             'arrow-footer-menu' => esc_html__('Footer Menu','arrow'),
         ]);
