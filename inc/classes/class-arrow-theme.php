@@ -15,8 +15,9 @@
 
     protected function __construct(){
 
-        //load class
+        //loading other class in the main class
         Assets::get_instance();
+        Menus::get_instance();
 
         $this->setup_hooks();
     }
@@ -52,6 +53,11 @@
         add_editor_style();
         add_theme_support('wp-block-styles');
         add_theme_support('align-wide'); 
+
+        global $content_width;
+        if(!isset($content_width)){
+            $content_width = 1240;
+        }
     }
     
 
