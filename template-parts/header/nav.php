@@ -5,10 +5,24 @@
  * @package Arrow
  */
 
+ wp_nav_menu(
+    [
+        'theme_location' => 'arrow-header-menu',
+        'container_class' => 'my_footer_menu_class'
+    ]
+    );
+
+
 $menu_class = \ARROW_THEME\Inc\Menus::get_instance();
+$menu_class->get_menu_id('arrow-header-menu');
+
 $header_menu_id = $menu_class->get_menu_id('arrow-header-menu');
 
 $header_menus = wp_get_nav_menu_items($header_menu_id);
+
+echo '<pre>';
+print_r($header_menus);
+wp_die();
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
