@@ -7,6 +7,6 @@
 get_header();
 ?>
 
-<div>page php</div>
+<div>Homepage php</div>
 
 <?php get_footer(); ?>

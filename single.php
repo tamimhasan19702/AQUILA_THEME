@@ -7,6 +7,6 @@
 get_header();
 ?>
 
-<div>page php</div>
+<div>Single post page </div>
 
 <?php get_footer(); ?>
