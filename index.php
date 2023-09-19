@@ -8,8 +8,8 @@
 get_header();
 ?>
 
-<div>
-    content
+<div class="content">
+    <?php esc_html_e('Content Blog', 'arrow') ?>
 </div>
 
 <?php
