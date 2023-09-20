@@ -12,7 +12,8 @@ get_header();
     <main id="main" class="site-main mt-5" role="main">
 
         <?php 
-  if(have_posts()){
+
+  if(have_posts()) : 
     ?>
         <div class="container">
             <?php 
@@ -35,6 +36,7 @@ get_header();
             $index = 0;
             $no_of_columns = 3;
 
+            //Case: index = 0;
             //start the loop
             while(have_posts()) : the_post();
               
@@ -44,11 +46,8 @@ get_header();
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <?php
                }
-               ?>
-
-                    <h3><?php the_title(); ?></h3>
-
-                    <?php
+              
+               get_template_part('template-parts/content');
 
                $index++;
             
@@ -66,7 +65,13 @@ get_header();
 
         </div>
         <?php
-  }
+
+      else : 
+
+        get_template_part('template-parts/content-none');
+
+endif;
+  
   ?>
 
     </main>
