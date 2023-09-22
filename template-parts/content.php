@@ -6,6 +6,9 @@
  * @package arrow
  */
 
+
 ?>
-<h3><?php the_title(); ?></h3>
-<div><?php the_content(); ?></div>
+
+<article id="post-<?php ?>">
+
+</article>
