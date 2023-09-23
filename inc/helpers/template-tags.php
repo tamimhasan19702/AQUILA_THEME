@@ -27,7 +27,7 @@ function get_the_post_thumbnail($post_id, $size = 'featured-image', $additional_
 
 }
 
-function the_post_custom_thumbnail($post_id, $size = 'featured-image', $additional_attributes = [])
+function the_post_custom_thumbnail($post_id, $size = 'featured-thumbnail', $additional_attributes = [])
 {
     echo get_the_post_thumbnail($post_id, $size, $additional_attributes);
 }
