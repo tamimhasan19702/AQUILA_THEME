@@ -37,14 +37,33 @@ class Meta_Boxes
                 'hide-page-title',
                 __('Hide page title', 'arrow'),
                 [$this, 'custom_meta_box_html'],
-                $screen
+                $screen,
+                'side'
             );
         }
     }
 
-    public function custom_meta_box_html()
+    public function custom_meta_box_html($post)
     {
+        $value = get_post_meta($post->ID, 'hide-page-title', true);
+        ?>
 
+        <label for="arrow-field">
+            <?php esc_html_e('Hide the page title', 'arrow'); ?>
+        </label>
+        <select name="arrow-field" id="arrow-field" class="postbox">
+            <option value="">
+                <?php esc_html_e('Select', 'arrow') ?>
+            </option>
+            <option value="yes">
+                <?php esc_html_e('Yes', 'arrow') ?>
+            </option>
+            <option value="else">
+                <?php esc_html_e('No', 'arrow') ?>
+            </option>
+        </select>
+
+        <?php
     }
 
 }
