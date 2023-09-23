@@ -52,7 +52,7 @@ class ARROW_THEME
         ]);
 
         add_theme_support('post-thumbnails');
-        add_image_size('featured-large', 350, 233, true);
+        add_image_size('featured-thumbnail', 350, 233, true);
         add_theme_support('customize-selective-refresh-widgets');
         add_theme_support('automatic-feed-links');
         add_theme_support('html5', ['search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'script', 'style']);
