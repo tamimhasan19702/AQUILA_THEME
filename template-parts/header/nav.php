@@ -7,10 +7,7 @@
 
 
 $menu_class = \ARROW_THEME\Inc\Menus::get_instance();
-$menu_class->get_menu_id('arrow-header-menu');
-
 $header_menu_id = $menu_class->get_menu_id('arrow-header-menu');
-
 $header_menus = wp_get_nav_menu_items($header_menu_id);
 
 ?>
@@ -20,10 +17,11 @@ $header_menus = wp_get_nav_menu_items($header_menu_id);
     <div class="container">
         <!-- this is for custom logo -->
         <?php
-    if (function_exists('the_custom_logo')) {
-        the_custom_logo();
-    }
-    ?>
+        if (function_exists('the_custom_logo')) {
+            the_custom_logo();
+        }
+        ?>
+
 
         <!-- this is a toggler button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -33,81 +31,81 @@ $header_menus = wp_get_nav_menu_items($header_menu_id);
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <?php 
-     
-       if(!empty($header_menus) && is_array($header_menus)){
-        ?>
+            <?php
 
-            <ul class="navbar-nav mr-auto">
-
-                <?php 
-        foreach($header_menus as $menu_item){
-            if( ! $menu_item->menu_item_parent){
-
-                // creating a child menu class and checking if the menu got any children or not
-                $child_menu_items = $menu_class->get_child_menu_items($header_menus, $menu_item->ID);
-                $has_children = ! empty($child_menu_items) && is_array($child_menu_items);
-
-                if(! $has_children){
+            if (!empty($header_menus) && is_array($header_menus)) {
                 ?>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo esc_url($menu_item->url); ?>">
-                        <?php echo esc_html($menu_item->title); ?>
-                    </a>
-                </li>
+                <ul class="navbar-nav mr-auto">
 
-                <?php
-            
-                }else{
-                ?>
+                    <?php
+                    foreach ($header_menus as $menu_item) {
+                        if (!$menu_item->menu_item_parent) {
 
-                <li class="nav-item dropdown">
+                            // creating a child menu class and checking if the menu got any children or not
+                            $child_menu_items = $menu_class->get_child_menu_items($header_menus, $menu_item->ID);
+                            $has_children = !empty($child_menu_items) && is_array($child_menu_items);
 
-                    <a class="nav-link dropdown-toggle" href="<?php echo esc_url($menu_item->url); ?>"
-                        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
+                            if (!$has_children) {
+                                ?>
 
-                        <?php echo esc_html($menu_item->title); ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo esc_url($menu_item->url); ?>">
+                                        <?php echo esc_html($menu_item->title); ?>
+                                    </a>
+                                </li>
 
-                    </a>
+                                <?php
 
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            } else {
+                                ?>
 
-                        <?php 
-                    foreach($child_menu_items as $child_menu_item){
-                    ?>
+                                <li class="nav-item dropdown">
 
-                        <a class="dropdown-item" href="<?php echo esc_url($child_menu_item->url) ?>">
-                            <?php echo esc_html($child_menu_item->title) ?>
-                        </a>
+                                    <a class="nav-link dropdown-toggle" href="<?php echo esc_url($menu_item->url); ?>"
+                                        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
 
-                        <?php
+                                        <?php echo esc_html($menu_item->title); ?>
+
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                        <?php
+                                        foreach ($child_menu_items as $child_menu_item) {
+                                            ?>
+
+                                            <a class="dropdown-item" href="<?php echo esc_url($child_menu_item->url) ?>">
+                                                <?php echo esc_html($child_menu_item->title) ?>
+                                            </a>
+
+                                            <?php
+                                        }
+                                        ?>
+
+                                    </div>
+
+                                </li>
+
+                                <?php
+                            }
+
+                            ?>
+
+                            <?php
+
+                        }
+
                     }
                     ?>
 
-                    </div>
-
-                </li>
+                </ul>
 
                 <?php
-                }
-                
-                ?>
-
-                <?php 
-               
             }
 
-            }
             ?>
-
-            </ul>
-
-            <?php
-        }
-
-        ?>
 
             <!--search form -->
             <form class="form-inline my-2 my-lg-0">

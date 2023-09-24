@@ -15,7 +15,7 @@ if (!defined('ARROW_DIR_URI')) {
 }
 
 require_once ARROW_DIR_PATH . '/inc/helpers/autoloader.php';
-require_once ARROW_DIR_PATH . '/inc/helpers/template-tags.php';
+// require_once ARROW_DIR_PATH . '/inc/helpers/template-tags.php';
 
 
 function Arrow_get_theme_instance()
