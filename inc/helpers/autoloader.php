@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 /**
@@ -17,9 +17,10 @@
  * @return void
  */
 
- namespace ARROW_THEME\Inc\Helpers;
+namespace ARROW_THEME\Inc\Helpers;
 
-function autoloader($resource = '') {
+function autoloader($resource = '')
+{
 	$resource_path = false;
 	$namespace_root = 'ARROW_THEME\\';
 	$resource = trim($resource, '\\');
@@ -49,7 +50,7 @@ function autoloader($resource = '') {
 	$file_name = '';
 
 	if ('inc' === $path[0]) {
-		
+
 		switch ($path[1]) {
 			case 'traits':
 				$directory = 'traits';
