@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 /**
  * Footer file 
  *  
  * @package  Arrow
-*/
+ */
 
 ?>
 

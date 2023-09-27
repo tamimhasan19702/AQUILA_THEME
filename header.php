@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 /**
  * Header file 
  *  
  * @package  Arrow
-*/
+ */
 
 ?>
 
@@ -20,19 +20,19 @@
 
 <body <?php body_class("theme-dev") ?>>
 
-    <?php 
-    
-    if(function_exists('wp_body_open')){
+    <?php
+
+    if (function_exists('wp_body_open')) {
         wp_body_open();
     }
-    
+
     ?>
 
     <div class="site" id="page">
         <header id="masthead" class="site-header" role="banner">
-            <?php 
-         get_template_part('template-parts/header/nav');
-         ?>
+            <?php
+            get_template_part('template-parts/header/nav');
+            ?>
         </header>
 
         <div class="site-content" id="content">
