@@ -58,6 +58,7 @@ class ARROW_THEME
         add_editor_style();
         add_theme_support('wp-block-styles');
         add_theme_support('align-wide');
+        add_image_🇸ize('featured-thumbnail', 350, 233, true);
 
         global $content_width;
         if (!isset($content_width)) {

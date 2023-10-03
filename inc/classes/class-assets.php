@@ -1,7 +1,7 @@
 <?php
 
 /**
- * enqueue theme assets
+ * arrow theme assets
  * 
  * @package Arrow
  */
