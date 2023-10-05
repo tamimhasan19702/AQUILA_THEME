@@ -24,6 +24,7 @@ class Meta_Boxes
     {
         //actions and filters
         add_action('add_meta_boxes', [$this, 'add_custom_meta_box']);
+        add_action('save_post', [$this, 'save_post_meta_data']);
     }
 
     public function add_custom_meta_box()
@@ -34,7 +35,8 @@ class Meta_Boxes
                 'hide_page_title',
                 esc_html__('Hide Page Title', 'arrow'),
                 [$this, 'custom_meta_box_html'],
-                $screen
+                $screen,
+                'side',
             );
         }
     }
@@ -48,7 +50,7 @@ class Meta_Boxes
 <label for="arrow-field">
     <?php esc_html_e('Hide Page Title', 'arrow');?>
 </label>
-<select name="arrow_field" id="arrow_field" class="postbox">
+<select name="arrow_hide_title_field" id="arrow_field" class="postbox">
 
     <option value=""><?php esc_html_e('Select', 'arrow');?></option>
 
@@ -63,6 +65,16 @@ class Meta_Boxes
 </select>
 <?php
 
+    }
+
+    public function save_post_meta_data() {
+    if(array_key_exists('arrow_hide_title_field', $_POST)) {
+    update_post_meta(
+        $post_id,
+        '_hide_page_title',
+        $_POST['arrow_hide_title_field']
+    );
+    }
     }
 
 }
