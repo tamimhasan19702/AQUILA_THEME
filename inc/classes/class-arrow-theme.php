@@ -21,6 +21,7 @@ class ARROW_THEME
         //loading other class in the main class
         Assets::get_instance();
         Menus::get_instance();
+        Meta_Boxes::get_instance();
 
         $this->setup_hooks();
     }
@@ -58,7 +59,7 @@ class ARROW_THEME
         add_editor_style();
         add_theme_support('wp-block-styles');
         add_theme_support('align-wide');
-        add_image_🇸ize('featured-thumbnail', 350, 233, true);
+        // add_image_🇸ize('featured-thumbnail', 350, 233, true);
 
         global $content_width;
         if (!isset($content_width)) {
