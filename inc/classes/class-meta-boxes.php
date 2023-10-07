@@ -52,51 +52,54 @@ class Meta_Boxes
 
         ?>
 
-<label for="arrow-field">
-    <?php esc_html_e('Hide Page Title', 'arrow'); ?>
-</label>
+        <label for="arrow-field">
+            <?php esc_html_e('Hide Page Title', 'arrow'); ?>
+        </label>
 
-<select name="arrow_hide_title_field" id="arrow-field" class="postbox">
+        <select name="arrow_hide_title_field" id="arrow-field" class="postbox">
 
-    <option value=""><?php esc_html_e('Select', 'arrow');?></option>
+            <option value="">
+                <?php esc_html_e('Select', 'arrow'); ?>
+            </option>
 
-    <option value="yes" <?php selected($value, 'yes');?>>
-        <?php esc_html_e('Yes', 'arrow');?>
-    </option>
+            <option value="yes" <?php selected($value, 'yes'); ?>>
+                <?php esc_html_e('Yes', 'arrow'); ?>
+            </option>
 
-    <option value="no" <?php selected($value, 'no');?>>
-        <?php esc_html_e('No', 'arrow');?>
-    </option>
+            <option value="no" <?php selected($value, 'no'); ?>>
+                <?php esc_html_e('No', 'arrow'); ?>
+            </option>
 
-</select>
+        </select>
 
-<?php
+        <?php
 
     }
 
-    public function save_post_meta_data() {
+    public function save_post_meta_data($post_id)
+    {
 
-    /**
-     * check the curent user is authorized or not
-     */
-    if(!current_user_can('edit_post',$post_id)) {
-        return;
-    }
+        /**
+         * check the curent user is authorized or not
+         */
+        if (!current_user_can('edit_post', $post_id)) {
+            return;
+        }
 
-    /**
-     * check if the nonce is valid
-     */
-    if(!isset($_POST['arrow_hide_title_field_nonce']) || !wp_verify_nonce($_POST['arrow_hide_title_field_nonce'], plugin_basename(__FILE__))) {
-        return;
-    }
+        /**
+         * check if the nonce is valid
+         */
+        if (!isset($_POST['arrow_hide_title_field_nonce']) || !wp_verify_nonce($_POST['arrow_hide_title_field_nonce'], plugin_basename(__FILE__))) {
+            return;
+        }
 
-    if(array_key_exists('arrow_hide_title_field', $_POST)) {
-    update_post_meta(
-        $post_id,
-        '_hide_page_title',
-        $_POST['arrow_hide_title_field']
-    );
-    }
+        if (array_key_exists('arrow_hide_title_field', $_POST)) {
+            update_post_meta(
+                $post_id,
+                '_hide_page_title',
+                $_POST['arrow_hide_title_field']
+            );
+        }
     }
 
 }

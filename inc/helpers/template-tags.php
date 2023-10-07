@@ -37,7 +37,7 @@ function arrow_posted_on()
 
     $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
-    //post the modified
+    //post the modified ( when post published time is not equal to post modified time )
     if (get_the_time('U') !== get_the_modified_time('U')) {
         $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s"</time>';
     }
@@ -56,4 +56,15 @@ function arrow_posted_on()
     );
 
     echo '<span class="posted-one text-secondary">' . $posted_on . '</span>';
+}
+
+function arrow_posted_by()
+{
+
+    $byline = sprintf(
+        esc_html_x(' by %s', 'post author', 'arrow'),
+        '<span class="author vcard"><a href="' . esc_url(get_author_posts_url(get_the_author_meta("ID"))) . '" rel="author">' . esc_html(get_the_author()) . '</a></a></span>'
+    );
+
+    echo '<span class="byline text-secondary">' . $byline . '</span>';
 }
