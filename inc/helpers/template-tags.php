@@ -82,3 +82,15 @@ function arrow_the_excerpt($trim_character_count = 0)
 
     echo $excerpt . '...';
 }
+
+function arrow_excerpt_more($more = '')
+{
+    if (!is_single()) {
+        $more = sprintf(
+            '<button class="btn btn-info mt-4"> <a  class="text-white arrow-read-more" href="%1$s">%2$s</a></button>',
+            get_permalink(get_the_ID()),
+            __('Read More', 'arrow')
+        );
+    }
+    return $more;
+}

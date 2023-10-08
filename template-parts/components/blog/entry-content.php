@@ -22,6 +22,7 @@
         );
     } else {
         arrow_the_excerpt();
+        arrow_excerpt_more();
     }
     ?>
 </div>
