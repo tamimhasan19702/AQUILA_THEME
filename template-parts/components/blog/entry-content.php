@@ -21,8 +21,8 @@
             )
         );
     } else {
-        arrow_the_excerpt();
-        arrow_excerpt_more();
+        arrow_the_excerpt(100);
+        echo arrow_excerpt_more();
     }
     ?>
 </div>
