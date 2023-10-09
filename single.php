@@ -6,12 +6,13 @@
  * @package themeDev
  */
 get_header();
+
 ?>
 
 <div id="primary">
     <main id="main" class="site-main mt-5" role="main">
         <?php
-        if (have_posts()) {
+        if (have_posts()):
 
             ?>
         <div class="container">
@@ -27,13 +28,29 @@ get_header();
             </header>
             <?php
                 }
-                ?>
 
+
+                while (have_posts()): the_post();
+
+                    get_template_part('template-parts/content');
+
+
+                endwhile;
+
+
+
+
+                ?>
 
         </div>
         <?php
 
-        }
+        else:
+
+            get_template_part('template-parts/content-none');
+
+        endif;
+
         ?>
     </main>
 </div>
