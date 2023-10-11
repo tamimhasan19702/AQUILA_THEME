@@ -20,9 +20,18 @@
                 the_title('<span class="screen-reader-text">"', '"</span>', false)
             )
         );
+
+        wp_link_pages([
+            'before' => '<div class="page-links">' . esc_html__('Pages:', 'arrow'),
+            'after' => '</div>',
+        ]);
+
     } else {
         arrow_the_excerpt(100);
         echo arrow_excerpt_more();
     }
+
+
+
     ?>
 </div>
