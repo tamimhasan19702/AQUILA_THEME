@@ -1,15 +1,15 @@
 <?php
 /**
- * Template for entry data
- * 
- * @package arrow
+ * Template for entry meta
+ *
+ * @package Aquila
  */
 
 ?>
 
 <div class="entry-meta mb-3">
-    <?php
-    arrow_posted_on();
-    arrow_posted_by();
-    ?>
+	<?php
+	aquila_posted_on();
+	aquila_posted_by();
+	?>
 </div>

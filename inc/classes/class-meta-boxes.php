@@ -1,105 +1,121 @@
 <?php
-
 /**
- * arrow theme meta boxes
- * 
- * @package Arrow
+ * Register Meta Boxes
+ *
+ * @package Aquila
  */
 
-namespace ARROW_THEME\Inc;
+namespace AQUILA_THEME\Inc;
 
-use ARROW_THEME\Inc\Traits\Singelton;
+use AQUILA_THEME\Inc\Traits\Singleton;
 
-class Meta_Boxes
-{
-    use Singelton;
+/**
+ * Class Meta_Boxes
+ */
+class Meta_Boxes {
 
-    protected function __construct()
-    {
-        //load class
-        $this->setup_hooks();
-    }
+	use Singleton;
 
-    protected function setup_hooks()
-    {
-        //actions and filters
-        add_action('add_meta_boxes', [$this, 'add_custom_meta_box']);
-        add_action('save_post', [$this, 'save_post_meta_data']);
-    }
+	protected function __construct() {
 
-    public function add_custom_meta_box()
-    {
-        $screens = ['post'];
-        foreach ($screens as $screen) {
-            add_meta_box(
-                'hide_page_title',
-                __('Hide Page Title', 'arrow'),
-                [$this, 'custom_meta_box_html'],
-                $screen,
-                'side'
-            );
-        }
-    }
+		// load class.
+		$this->setup_hooks();
+	}
 
-    public function custom_meta_box_html($post)
-    {
-        $value = get_post_meta($post->ID, '_hide_page_title', true);
+	protected function setup_hooks() {
 
-        /**
-         * Use nonce for security
-         */
-        wp_nonce_field(plugin_basename(__FILE__), 'arrow_hide_title_field_nonce');
+		/**
+		 * Actions.
+		 */
+		add_action( 'add_meta_boxes', [ $this, 'add_custom_meta_box' ] );
+		add_action( 'save_post', [ $this, 'save_post_meta_data' ] );
 
-        ?>
+	}
 
-        <label for="arrow-field">
-            <?php esc_html_e('Hide Page Title', 'arrow'); ?>
-        </label>
+	/**
+	 * Add custom meta box.
+	 *
+	 * @return void
+	 */
+	public function add_custom_meta_box() {
+		$screens = [ 'post' ];
+		foreach ( $screens as $screen ) {
+			add_meta_box(
+				'hide-page-title',           // Unique ID
+				__( 'Hide page title', 'aquila' ),  // Box title
+				[ $this, 'custom_meta_box_html' ],  // Content callback, must be of type callable
+				$screen,                   // Post type
+				'side' // context
+			);
+		}
+	}
 
-        <select name="arrow_hide_title_field" id="arrow-field" class="postbox">
+	/**
+	 * Custom meta box HTML( for form )
+	 *
+	 * @param object $post Post.
+	 *
+	 * @return void
+	 */
+	public function custom_meta_box_html( $post ) {
 
-            <option value="">
-                <?php esc_html_e('Select', 'arrow'); ?>
-            </option>
+		$value = get_post_meta( $post->ID, '_hide_page_title', true );
 
-            <option value="yes" <?php selected($value, 'yes'); ?>>
-                <?php esc_html_e('Yes', 'arrow'); ?>
-            </option>
+		/**
+		 * Use nonce for verification.
+		 * This will create a hidden input field with id and name as
+		 * 'hide_title_meta_box_nonce_name' and unique nonce input value.
+		 */
+		wp_nonce_field( plugin_basename(__FILE__), 'hide_title_meta_box_nonce_name' );
 
-            <option value="no" <?php selected($value, 'no'); ?>>
-                <?php esc_html_e('No', 'arrow'); ?>
-            </option>
+		?>
+		<label for="aquila-field"><?php esc_html_e( 'Hide the page title', 'aquila' ); ?></label>
+		<select name="aquila_hide_title_field" id="aquila-field" class="postbox">
+			<option value=""><?php esc_html_e( 'Select', 'aquila' ); ?></option>
+			<option value="yes" <?php selected( $value, 'yes' ); ?>>
+				<?php esc_html_e( 'Yes', 'aquila' ); ?>
+			</option>
+			<option value="no" <?php selected( $value, 'no' ); ?>>
+				<?php esc_html_e( 'No', 'aquila' ); ?>
+			</option>
+		</select>
+		<?php
+	}
 
-        </select>
+	/**
+	 * Save post meta into database
+	 * when the post is saved.
+	 *
+	 * @param integer $post_id Post id.
+	 *
+	 * @return void
+	 */
+	public function save_post_meta_data( $post_id ) {
 
-        <?php
+		/**
+		 * When the post is saved or updated we get $_POST available
+		 * Check if the current user is authorized
+		 */
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
 
-    }
+		/**
+		 * Check if the nonce value we received is the same we created.
+		 */
+		if ( ! isset( $_POST['hide_title_meta_box_nonce_name'] ) ||
+		     ! wp_verify_nonce( $_POST['hide_title_meta_box_nonce_name'], plugin_basename(__FILE__) )
+		) {
+			return;
+		}
 
-    public function save_post_meta_data($post_id)
-    {
-
-        /**
-         * check the curent user is authorized or not
-         */
-        if (!current_user_can('edit_post', $post_id)) {
-            return;
-        }
-
-        /**
-         * check if the nonce is valid
-         */
-        if (!isset($_POST['arrow_hide_title_field_nonce']) || !wp_verify_nonce($_POST['arrow_hide_title_field_nonce'], plugin_basename(__FILE__))) {
-            return;
-        }
-
-        if (array_key_exists('arrow_hide_title_field', $_POST)) {
-            update_post_meta(
-                $post_id,
-                '_hide_page_title',
-                $_POST['arrow_hide_title_field']
-            );
-        }
-    }
+		if ( array_key_exists( 'aquila_hide_title_field', $_POST ) ) {
+			update_post_meta(
+				$post_id,
+				'_hide_page_title',
+				$_POST['aquila_hide_title_field']
+			);
+		}
+	}
 
 }

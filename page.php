@@ -1,12 +1,14 @@
 <?php
 /**
  * Page template
- * 
- * @package arrow
+ *
+ * @package Aquila
  */
+
 get_header();
+
 ?>
 
-<div>page php</div>
+<div>Single Page</div>
 
 <?php get_footer(); ?>
