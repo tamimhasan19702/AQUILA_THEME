@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Singleton trait which implements Singleton pattern in any class in which this trait is used.
  *
@@ -27,7 +28,8 @@
 
 namespace AQUILA_THEME\Inc\Traits;
 
-trait Singleton {
+trait Singleton
+{
 
 	/**
 	 * Protected class constructor to prevent direct object creation
@@ -36,14 +38,12 @@ trait Singleton {
 	 * this trait. This is ideal for doing stuff that you only want to
 	 * do once, such as hooking into actions and filters, etc.
 	 */
-	protected function __construct() {
-	}
+	protected function __construct() {}
 
 	/**
 	 * Prevent object cloning
 	 */
-	final protected function __clone() {
-	}
+	final protected function __clone() {}
 
 	/**
 	 * This method returns new or existing Singleton instance
@@ -52,7 +52,8 @@ trait Singleton {
 	 *
 	 * @return object Singleton instance of the class.
 	 */
-	final public static function get_instance() {
+	final public static function get_instance()
+	{
 
 		/**
 		 * Collection of instance.
@@ -71,19 +72,17 @@ trait Singleton {
 		 */
 		$called_class = get_called_class();
 
-		if ( ! isset( $instance[ $called_class ] ) ) {
+		if (! isset($instance[$called_class])) {
 
-			$instance[ $called_class ] = new $called_class();
+			$instance[$called_class] = new $called_class();
 
 			/**
 			 * Dependent items can use the `aquila_theme_singleton_init_{$called_class}` hook to execute code
 			 */
-			do_action( sprintf( 'aquila_theme_singleton_init_%s', $called_class ) ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+			do_action(sprintf('aquila_theme_singleton_init_%s', $called_class)); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 
 		}
 
-		return $instance[ $called_class ];
-
+		return $instance[$called_class];
 	}
-
 } // End trait
