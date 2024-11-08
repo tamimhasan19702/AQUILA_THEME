@@ -5,9 +5,9 @@
  * @package Aquila
  */
 
-namespace AQUILA_THEME\Inc;
+namespace ARROW\Inc;
 
-use AQUILA_THEME\Inc\Traits\Singleton;
+use ARROW\Inc\Traits\Singleton;
 
 /**
  * Class Meta_Boxes
@@ -69,17 +69,17 @@ class Meta_Boxes {
 		wp_nonce_field( plugin_basename(__FILE__), 'hide_title_meta_box_nonce_name' );
 
 		?>
-		<label for="aquila-field"><?php esc_html_e( 'Hide the page title', 'aquila' ); ?></label>
-		<select name="aquila_hide_title_field" id="aquila-field" class="postbox">
-			<option value=""><?php esc_html_e( 'Select', 'aquila' ); ?></option>
-			<option value="yes" <?php selected( $value, 'yes' ); ?>>
-				<?php esc_html_e( 'Yes', 'aquila' ); ?>
-			</option>
-			<option value="no" <?php selected( $value, 'no' ); ?>>
-				<?php esc_html_e( 'No', 'aquila' ); ?>
-			</option>
-		</select>
-		<?php
+<label for="aquila-field"><?php esc_html_e( 'Hide the page title', 'aquila' ); ?></label>
+<select name="aquila_hide_title_field" id="aquila-field" class="postbox">
+    <option value=""><?php esc_html_e( 'Select', 'aquila' ); ?></option>
+    <option value="yes" <?php selected( $value, 'yes' ); ?>>
+        <?php esc_html_e( 'Yes', 'aquila' ); ?>
+    </option>
+    <option value="no" <?php selected( $value, 'no' ); ?>>
+        <?php esc_html_e( 'No', 'aquila' ); ?>
+    </option>
+</select>
+<?php
 	}
 
 	/**

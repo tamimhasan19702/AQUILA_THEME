@@ -5,9 +5,9 @@
  * @package Aquila
  */
 
-namespace AQUILA_THEME\Inc;
+namespace ARROW\Inc;
 
-use AQUILA_THEME\Inc\Traits\Singleton;
+use ARROW\Inc\Traits\Singleton;
 
 /**
  * Class Assets
@@ -72,7 +72,7 @@ class Sidebars {
 	}
 
 	public function register_clock_widget() {
-		register_widget( 'AQUILA_THEME\Inc\Clock_Widget' );
+		register_widget( 'ARROW\Inc\Clock_Widget' );
 	}
 
 }

@@ -26,7 +26,7 @@
  * @package Aquila
  */
 
-namespace AQUILA_THEME\Inc\Traits;
+namespace ARROW\Inc\Traits;
 
 trait Singleton
 {
@@ -85,4 +85,4 @@ trait Singleton
 
 		return $instance[$called_class];
 	}
-} // End trait
+} 

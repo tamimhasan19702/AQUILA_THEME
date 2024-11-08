@@ -5,9 +5,9 @@
  * @package Aquila
  */
 
-namespace AQUILA_THEME\Inc;
+namespace ARROW\Inc;
 
-use AQUILA_THEME\Inc\Traits\Singleton;
+use ARROW\Inc\Traits\Singleton;
 use \WP_Query;
 
 class Loadmore_Posts {
@@ -108,20 +108,21 @@ class Loadmore_Posts {
 
 		// Initial Post Load.
 		?>
-		<div class="load-more-content-wrap">
-			<div id="load-more-content" class="row">
-					<?php
+<div class="load-more-content-wrap">
+    <div id="load-more-content" class="row">
+        <?php
 					$this->ajax_script_post_load_more( true );
 
 					// If user is not in editor and on page one, show the load more.
 					?>
-			</div>
-			<button id="load-more" data-page="1" class="load-more-btn my-4 d-flex flex-column mx-auto px-4 py-2 border-0 bg-transparent">
-				<span><?php esc_html_e( 'Loading...', 'text-domain' ); ?></span>
-				<?php get_template_part( 'template-parts/svgs/loading' ); ?>
-			</button>
-		</div>
-		<?php
+    </div>
+    <button id="load-more" data-page="1"
+        class="load-more-btn my-4 d-flex flex-column mx-auto px-4 py-2 border-0 bg-transparent">
+        <span><?php esc_html_e( 'Loading...', 'text-domain' ); ?></span>
+        <?php get_template_part( 'template-parts/svgs/loading' ); ?>
+    </button>
+</div>
+<?php
 	}
 
 

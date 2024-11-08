@@ -1,15 +1,11 @@
 <?php
-/**
- * Bootstraps the Theme.
- *
- * @package Aquila
- */
 
-namespace AQUILA_THEME\Inc;
 
-use AQUILA_THEME\Inc\Traits\Singleton;
+namespace ARROW\Inc;
 
-class AQUILA_THEME {
+use ARROW\Inc\Traits\Singleton;
+
+class ARROW_THEME {
 	use Singleton;
 
 	protected function __construct() {
@@ -197,6 +193,10 @@ class AQUILA_THEME {
 		if ( ! isset( $content_width ) ) {
 			$content_width = 1240;
 		}
+	}
+
+	public function test(){
+		print_r( 'test' );	
 	}
 
 }

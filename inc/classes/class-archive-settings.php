@@ -5,9 +5,9 @@
  * @package Aquila
  */
 
-namespace AQUILA_THEME\Inc;
+namespace ARROW\Inc;
 
-use AQUILA_THEME\Inc\Traits\Singleton;
+use ARROW\Inc\Traits\Singleton;
 
 class Archive_Settings {
 	use Singleton;

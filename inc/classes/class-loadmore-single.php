@@ -5,9 +5,9 @@
  * @package Aquila
  */
 
-namespace AQUILA_THEME\Inc;
+namespace ARROW\Inc;
 
-use AQUILA_THEME\Inc\Traits\Singleton;
+use ARROW\Inc\Traits\Singleton;
 use \WP_Query;
 
 class Loadmore_Single {
@@ -108,25 +108,20 @@ class Loadmore_Single {
 		}
 
 		?>
-		<div class="single-post-loadmore-wrap">
-			<div id="single-post-load-more-content" class="single-post-loadmore">
-				<?php // This is where more posts will be added ?>
-			</div>
-			<div class="text-center mb-5 mt-5">
-				<button
-					id="single-post-load-more-btn"
-					data-page="0"
-					data-single-post-id="<?php echo esc_attr( $single_post_id ); ?>"
-					class="btn btn-info"
-					data-max-pages="<?php echo esc_attr( $total_pages ); ?>"
-				>
-					<span><?php esc_html_e( 'Load More Stories', 'aquila' ); ?></span>
-				</button>
-				<span id="single-loading-text"
-				      class="mt-1 hidden"><?php esc_html_e( 'Loading...', 'aquila' ); ?></span>
-			</div>
-		</div>
-		<?php
+<div class="single-post-loadmore-wrap">
+    <div id="single-post-load-more-content" class="single-post-loadmore">
+        <?php // This is where more posts will be added ?>
+    </div>
+    <div class="text-center mb-5 mt-5">
+        <button id="single-post-load-more-btn" data-page="0"
+            data-single-post-id="<?php echo esc_attr( $single_post_id ); ?>" class="btn btn-info"
+            data-max-pages="<?php echo esc_attr( $total_pages ); ?>">
+            <span><?php esc_html_e( 'Load More Stories', 'aquila' ); ?></span>
+        </button>
+        <span id="single-loading-text" class="mt-1 hidden"><?php esc_html_e( 'Loading...', 'aquila' ); ?></span>
+    </div>
+</div>
+<?php
 	}
 
 

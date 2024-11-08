@@ -5,7 +5,7 @@
  * @package Aquila
  */
 
-use AQUILA_THEME\Inc\Loadmore_Posts;
+use ARROW\Inc\Loadmore_Posts;
 
 get_header();
 
