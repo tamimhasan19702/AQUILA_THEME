@@ -5,7 +5,7 @@
  * @package Aquila
  */
 
-namespace ARROW\Inc\Helpers;
+namespace AQUILA\Inc\Helpers;
 
 /**
  * Auto loader function.
@@ -16,7 +16,7 @@ namespace ARROW\Inc\Helpers;
  */
 function autoloader( $resource = '' ) {
 	$resource_path  = false;
-	$namespace_root = 'ARROW\\';
+	$namespace_root = 'AQUILA\\';
 	$resource       = trim( $resource, '\\' );
 
 	if ( empty( $resource ) || strpos( $resource, '\\' ) === false || strpos( $resource, $namespace_root ) !== 0 ) {
@@ -84,4 +84,4 @@ function autoloader( $resource = '' ) {
 
 }
 
-spl_autoload_register( '\ARROW\Inc\Helpers\autoloader' );
+spl_autoload_register( '\AQUILA\Inc\Helpers\autoloader' );

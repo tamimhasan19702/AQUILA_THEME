@@ -26,7 +26,7 @@
  * @package Aquila
  */
 
-namespace ARROW\Inc\Traits;
+namespace AQUILA\Inc\Traits;
 
 trait Singleton
 {

@@ -60,7 +60,7 @@ require_once AQUILA_DIR_PATH . '/inc/helpers/template-tags.php';
 
 function aquila_get_theme_instance()
 {
-	\ARROW\Inc\ARROW_THEME::get_instance();
+	\AQUILA\Inc\AQUILA_THEME::get_instance();
 }
 
 aquila_get_theme_instance();

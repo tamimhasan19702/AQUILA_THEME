@@ -5,9 +5,9 @@
  * @package Aquila
  */
 
-namespace ARROW\Inc;
+ namespace AQUILA\Inc;
 
-use ARROW\Inc\Traits\Singleton;
+ use AQUILA\Inc\Traits\Singleton;
 use \WP_Query;
 
 class Loadmore_Single {

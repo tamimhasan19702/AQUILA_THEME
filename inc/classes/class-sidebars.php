@@ -5,9 +5,9 @@
  * @package Aquila
  */
 
-namespace ARROW\Inc;
+ namespace AQUILA\Inc;
 
-use ARROW\Inc\Traits\Singleton;
+ use AQUILA\Inc\Traits\Singleton;
 
 /**
  * Class Assets
@@ -72,7 +72,7 @@ class Sidebars {
 	}
 
 	public function register_clock_widget() {
-		register_widget( 'ARROW\Inc\Clock_Widget' );
+		register_widget( 'AQUILA\Inc\Clock_Widget' );
 	}
 
 }

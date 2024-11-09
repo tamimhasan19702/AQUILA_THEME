@@ -1,11 +1,11 @@
 <?php
 
 
-namespace ARROW\Inc;
+namespace AQUILA\Inc;
 
-use ARROW\Inc\Traits\Singleton;
+use AQUILA\Inc\Traits\Singleton;
 
-class ARROW_THEME {
+class AQUILA_THEME {
 	use Singleton;
 
 	protected function __construct() {

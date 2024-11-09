@@ -5,9 +5,9 @@
  * @package Aquila
  */
 
-namespace ARROW\Inc;
+ namespace AQUILA\Inc;
 
-use ARROW\Inc\Traits\Singleton;
+ use AQUILA\Inc\Traits\Singleton;
 
 class Register_Taxonomies {
 	use Singleton;

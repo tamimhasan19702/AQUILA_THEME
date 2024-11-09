@@ -5,11 +5,13 @@
  * @package Aquila
  */
 
-namespace ARROW\Inc;
+ namespace AQUILA\Inc;
+
+ use AQUILA\Inc\Traits\Singleton;
 
 use WP_Widget;
 
-use ARROW\Inc\Traits\Singleton;
+
 
 class Clock_Widget extends WP_Widget {
 
